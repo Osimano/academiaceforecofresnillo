@@ -1,4 +1,4 @@
-/* CONFIGURACIÓN GENERAL */
+/* CONFIGURACIÓN GENERAL REFORZADA */
 * {
     margin: 0;
     padding: 0;
@@ -8,27 +8,28 @@
 }
 
 :root {
-    --primary: #b07d85;  /* El Rosa Viejo/Malva de CEFORECO */
-    --dark: #16161a;     /* Negro premium para contraste */
-    --light: #ffffff;    /* Blanco limpio */
-    --accent: #ca9e6a;   /* Dorado elegante para destacar módulos */
-    --whatsapp: #25d366;
+    --primary: #b07d85;  /* Rosa Viejo / Malva de CEFORECO */
+    --dark: #16161a;     /* Negro premium */
+    --light: #ffffff;    /* Blanco */
+    --accent: #ca9e6a;   /* Dorado elegante */
+    --whatsapp: #25d366; /* Verde oficial WhatsApp */
 }
 
 body {
     background-color: #faf8f8;
     color: var(--dark);
     line-height: 1.6;
+    overflow-x: hidden; /* Evita que la pantalla se mueva de lado en celulares */
 }
 
-/* NAVBAR */
+/* NAVBAR RESPONSIVO Y SEGURO */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
     background: var(--light);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -46,11 +47,17 @@ body {
     color: var(--primary);
 }
 
+.navbar nav {
+    display: flex;
+    align-items: center;
+}
+
 .navbar nav a {
     text-decoration: none;
     color: var(--dark);
-    margin-left: 20px;
+    margin-left: 25px;
     font-weight: 600;
+    font-size: 0.95rem;
     transition: color 0.3s;
 }
 
@@ -61,32 +68,35 @@ body {
 .navbar .btn-nav {
     background: var(--primary);
     color: #fff !important;
-    padding: 8px 20px;
+    padding: 10px 24px;
     border-radius: 25px;
-    transition: background 0.3s;
+    transition: all 0.3s;
 }
 
 .navbar .btn-nav:hover {
     background: var(--dark);
+    transform: translateY(-2px);
 }
 
-/* HERO SECTION */
+/* HERO SECTION EQUILIBRADO */
 .hero {
     background: linear-gradient(rgba(22, 22, 26, 0.75), rgba(22, 22, 26, 0.75)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1920') no-repeat center center/cover;
-    height: 75vh;
+    min-height: 70vh;
+    padding: 60px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #fff;
-    padding: 0 20px;
 }
 
 .hero-content {
     max-width: 850px;
+    width: 100%;
 }
 
 .badge {
+    display: inline-block;
     background: var(--accent);
     color: var(--dark);
     padding: 6px 18px;
@@ -95,11 +105,13 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 .hero h1 {
-    font-size: 3.2rem;
-    margin: 25px 0 15px 0;
+    font-size: 3rem;
+    line-height: 1.2;
+    margin: 15px 0 20px 0;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
@@ -111,14 +123,20 @@ body {
     color: #e2e2e5;
 }
 
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
 .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
-    display: inline-block;
     padding: 14px 32px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    margin: 10px;
     transition: all 0.3s;
+    text-align: center;
 }
 
 .hero-buttons .btn-primary {
@@ -143,18 +161,25 @@ body {
     transform: translateY(-3px);
 }
 
-/* STATS */
+/* STATS SIMÉTRICOS */
 .stats {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     background: var(--light);
     padding: 40px 8%;
     text-align: center;
+    gap: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.02);
 }
 
+.stat-item {
+    flex: 1;
+    min-width: 200px;
+}
+
 .stat-item h3 {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
     color: var(--primary);
     margin-bottom: 5px;
 }
@@ -165,9 +190,9 @@ body {
     font-size: 0.95rem;
 }
 
-/* CURSOS SECTION */
+/* CURSOS SECTION REFORZADA (SOLUCIÓN DE ALINEACIÓN DE TARJETAS) */
 .cursos-container {
-    padding: 90px 8%;
+    padding: 80px 8%;
     text-align: center;
 }
 
@@ -189,28 +214,31 @@ body {
 
 .subtitle {
     color: #666;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     font-size: 1.05rem;
 }
 
+/* Rejilla inteligente que equilibra columnas */
 .cursos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    align-items: stretch; /* Obliga a todas las tarjetas a medir exactamente lo mismo */
 }
 
+/* Estructura elástica de la tarjeta */
 .curso-card {
     background: var(--light);
     padding: 40px 30px;
     border-radius: 16px;
     box-shadow: 0 10px 35px rgba(0,0,0,0.04);
     text-align: left;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     border-top: 4px solid transparent;
     transition: all 0.3s ease;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el botón al fondo de forma matemática */
 }
 
 .curso-card:hover {
@@ -220,7 +248,7 @@ body {
 }
 
 .curso-card h3 {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-size: 1.35rem;
     color: var(--dark);
 }
@@ -233,11 +261,15 @@ body {
     text-transform: uppercase;
 }
 
+/* Contenedor expandible para que el texto ocupe un espacio armónico */
+.descripcion-wrapper {
+    flex-grow: 1; 
+}
+
 .descripcion {
     color: #5a5a60;
     font-size: 0.95rem;
-    margin-bottom: 20px;
-    min-height: 70px;
+    margin-bottom: 25px;
 }
 
 .btn-card {
@@ -250,13 +282,14 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s;
+    margin-top: auto; /* Anclaje perfecto abajo */
 }
 
 .curso-card:hover .btn-card {
     background: var(--primary);
 }
 
-/* BUSINESS MODULES */
+/* BUSINESS MODULES RECONSTRUIDOS */
 .business-modules {
     background: #f4efef;
     padding: 80px 8%;
@@ -269,20 +302,22 @@ body {
 }
 
 .modules-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
 
 .module-item {
     background: var(--light);
-    padding: 35px 25px;
+    padding: 40px 25px;
     border-radius: 12px;
-    max-width: 320px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.02);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .module-item i {
@@ -301,19 +336,19 @@ body {
     color: #666;
 }
 
-/* FOOTER */
+/* FOOTER SEGURO PARA SMARTPHONES */
 footer {
     background: var(--dark);
     color: #fff;
-    padding: 70px 8% 25px 8%;
+    padding: 60px 8% 30px 8%;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 50px;
-    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    text-align: left;
 }
 
 .footer-info h3 {
@@ -326,9 +361,12 @@ footer {
 .footer-info p {
     margin-bottom: 12px;
     color: #b5b5be;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-info p i {
+    margin-right: 8px;
+    color: var(--accent);
 }
 
 .footer-links h4 {
@@ -337,11 +375,14 @@ footer {
 }
 
 .footer-links a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #b5b5be;
     text-decoration: none;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     transition: color 0.3s;
+    font-size: 0.95rem;
 }
 
 .footer-links a:hover {
@@ -356,20 +397,20 @@ footer {
     color: #888;
 }
 
-/* WHATSAPP FLOAT BUTTON */
+/* WHATSAPP FLOAT BUTTON PERFECTO */
 .whatsapp-float {
     position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 40px;
-    right: 40px;
+    bottom: 30px;
+    right: 30px;
     background-color: var(--whatsapp);
     color: #FFF;
     border-radius: 50px;
     text-align: center;
     font-size: 30px;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-    z-index: 100;
+    z-index: 9999; /* Asegura que no quede tapado por nada */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -381,12 +422,70 @@ footer {
     transform: scale(1.1);
 }
 
-/* RESPONSIVE DESIGN */
+/* MÁXIMA OPTIMIZACIÓN MÓVIL AUTOMÁTICA */
 @media (max-width: 768px) {
-    .navbar { padding: 20px 5%; flex-direction: column; gap: 15px; }
-    .navbar nav a { margin: 0 10px; }
-    .hero h1 { font-size: 2.2rem; }
-    .hero p { font-size: 1rem; }
-    .stats { flex-direction: column; gap: 30px; }
-    .footer-content { flex-direction: column; gap: 30px; }
+    .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    .navbar nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .navbar nav a {
+        margin: 0 8px;
+        font-size: 0.85rem;
+    }
+    .navbar .btn-nav {
+        padding: 6px 15px;
+        margin-top: 5px;
+    }
+    .hero {
+        padding: 40px 15px;
+    }
+    .hero h1 {
+        font-size: 2.1rem;
+    }
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 10px;
+    }
+    .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
+        width: 100%;
+        margin: 0;
+    }
+    .cursos-container {
+        padding: 50px 20px;
+    }
+    .cursos-container h2 {
+        font-size: 1.8rem;
+    }
+    .business-modules {
+        padding: 50px 20px;
+    }
+    .business-modules h2 {
+        font-size: 1.7rem;
+    }
+    footer {
+        padding: 40px 20px 20px 20px;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
 }
